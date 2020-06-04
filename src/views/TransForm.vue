@@ -26,14 +26,14 @@
             </el-col>
             <el-col :span="6">
                 <el-row>
-                    <el-col>
+                    <el-col :span="12">
                         <div class="grid-content bg-purple-light">
                             <el-button @click="trans">Trans</el-button>
                         </div>
                     </el-col>
-                    <el-col>
+                    <el-col :span="12">
                         <div class="grid-content bg-purple-light">
-                            <el-button @click="transToEmpty">TransToEmpty</el-button>
+                            <el-button @click="transToDefaultEmpty">TransToDefaultEmpty</el-button>
                         </div>
                     </el-col>
                 </el-row>
@@ -67,7 +67,7 @@
                 result += '];';
                 this.currentInput = result;
             },
-            transToEmpty() {
+            transToDefaultEmpty() {
                 if(!this.currentInput.indexOf("[") &&
                     !this.currentInput.indexOf("]")){
                     return false
@@ -76,7 +76,11 @@
                 let list = this.currentInput.split('\n');
                 let result = '[\n';
                 list.forEach(function(item){
-                    result += '\''+item+'\' => \'\',\n';
+                    if(typeof item === 'number'){
+                        result += '\''+item+'\' => 0,\n';
+                    }else{
+                        result += '\''+item+'\' => \'\',\n';
+                    }
                 });
                 result += '];';
                 this.currentInput = result;
