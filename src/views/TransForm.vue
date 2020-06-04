@@ -28,6 +28,9 @@
                 <div class="grid-content bg-purple-light">
                     <el-button @click="trans">Trans</el-button>
                 </div>
+                <div class="grid-content bg-purple-light">
+                    <el-button @click="trans">TransToEmpty</el-button>
+                </div>
             </el-col>
             <el-col :span="6">
                 <div class="grid-content bg-purple"></div>
@@ -57,7 +60,21 @@
                 });
                 result += '];';
                 this.currentInput = result;
-            }
+            },
+            transToEmpty() {
+                if(!this.currentInput.indexOf("[") &&
+                    !this.currentInput.indexOf("]")){
+                    return false
+                }
+
+                let list = this.currentInput.split('\n');
+                let result = '[\n';
+                list.forEach(function(item){
+                    result += '\''+item+'\' => \'\',\n';
+                });
+                result += '];';
+                this.currentInput = result;
+            },
         }
     }
 </script>
