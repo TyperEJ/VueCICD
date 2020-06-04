@@ -25,12 +25,18 @@
                 <div class="grid-content bg-purple"></div>
             </el-col>
             <el-col :span="6">
-                <div class="grid-content bg-purple-light">
-                    <el-button @click="trans">Trans</el-button>
-                </div>
-                <div class="grid-content bg-purple-light">
-                    <el-button @click="trans">TransToEmpty</el-button>
-                </div>
+                <el-row>
+                    <el-col>
+                        <div class="grid-content bg-purple-light">
+                            <el-button @click="trans">Trans</el-button>
+                        </div>
+                    </el-col>
+                    <el-col>
+                        <div class="grid-content bg-purple-light">
+                            <el-button @click="transToEmpty">TransToEmpty</el-button>
+                        </div>
+                    </el-col>
+                </el-row>
             </el-col>
             <el-col :span="6">
                 <div class="grid-content bg-purple"></div>
